@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char msg[100];
+
+    printf("---- Chat Box ----\n");
+    printf("Type 'bye' to exit.\n\n");
+
+    while (1) {
+        printf("You: ");
+        gets(msg);  // user ka message lena
+
+        if (strcmp(msg, "bye") == 0) {
+            printf("ChatBot: Bye! Have a nice day!\n");
+            break;
+        }
+        else if (strcmp(msg, "hi") == 0 || strcmp(msg, "hello") == 0) {
+            printf("ChatBot: Hello! How are you?\n");
+        }
+        else if (strcmp(msg, "fine") == 0) {
+            printf("ChatBot: Great to hear that!\n");
+        }
+        else if (strcmp(msg, "what is your name") == 0) {
+            printf("ChatBot: My name is ChatBot.\n");
+        }
+        else if (strcmp(msg, "how are you") == 0) {
+            printf("ChatBot: I am fine, thank you!\n");
+        }
+        else {
+            printf("ChatBot: Sorry, I don't understand.\n");
+        }
+    }
+
+    return 0;
+}
