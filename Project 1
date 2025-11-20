@@ -1,0 +1,105 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+// Function to convert a string to lowercase
+void toLowerCase(char *str) {
+    for (int i = 0; str[i]; i++) {
+        str[i] = tolower(str[i]);
+    }
+}
+
+int main() {
+    char input[200];
+    printf("======================================\n");
+    printf("       WELCOME TO C LEARNING CHATBOT\n");
+    printf("======================================\n");
+    printf("You can chat with me or ask about C language basics.\n");
+    printf("Type 'exit' to quit.\n\n");
+
+    while (1) {
+        printf("You: ");
+        fflush(stdout);
+        fgets(input, sizeof(input), stdin);
+        input[strcspn(input, "\n")] = '\0';  // remove newline
+
+        toLowerCase(input);  // convert to lowercase for matching
+
+        // Exit condition
+        if (strstr(input, "exit") != NULL) {
+            printf("C-Bot: Goodbye! Keep practicing C programming!\n");
+            break;
+        }
+
+        // ---- GREETINGS & SMALL TALK ----
+        else if (strstr(input, "hi") != NULL || strstr(input, "hello") != NULL) {
+            printf("C-Bot: Hello! How are you?");
+        }
+        else if (strstr(input, "fine") != NULL || strstr(input, "i am fine") != NULL) {
+            printf("C-Bot: Glad to hear that! What do you want to learn today?");
+        }
+        else if (strstr(input, "how are you") != NULL) {
+            printf("C-Bot: I'm always fine and ready to help you learn C!");
+        }
+        else if (strstr(input, "your name") != NULL) {
+            printf("C-Bot: My name is C-Bot. I was made in C language!");
+        }
+        else if (strstr(input, "who made you") != NULL) {
+            printf("C-Bot: I was created by a student just like you, learning C!");
+        }
+        else if (strstr(input, "thank") != NULL) {
+            printf("C-Bot: You're welcome! Keep coding and improving!");
+        }
+        else if (strstr(input, "bye") != NULL) {
+            printf("C-Bot: Bye-bye! Take care and keep learning!");
+            break;
+        }
+
+        // ---- C PROGRAMMING QUESTIONS ----
+        else if (strstr(input, "what is c") != NULL || strstr(input, "define c") != NULL) {
+            printf("C-Bot: C is a powerful general-purpose programming language used to develop system and application software.");
+        }
+        else if (strstr(input, "variable") != NULL) {
+            printf("C-Bot: A variable is a named memory location used to store data values.");
+        }
+        else if (strstr(input, "array") != NULL) {
+            printf("C-Bot: An array is a collection of elements of the same type stored in continuous memory locations.");
+        }
+        else if (strstr(input, "pointer") != NULL) {
+            printf("C-Bot: A pointer is a variable that stores the address of another variable.");
+        }
+        else if (strstr(input, "loop") != NULL) {
+            printf("C-Bot: A loop allows repeating a block of code multiple times — for, while, and do-while are common loops.");
+        }
+        else if (strstr(input, "structure") != NULL) {
+            printf("C-Bot: A structure is a user-defined data type that groups variables of different types together.");
+        }
+        else if (strstr(input, "function") != NULL) {
+            printf("C-Bot: A function is a reusable block of code that performs a specific task.");
+        }
+        else if (strstr(input, "operator") != NULL) {
+            printf("C-Bot: Operators are symbols used to perform operations like +, -, *, /, =, etc.");
+        }
+        else if (strstr(input, "if") != NULL && strstr(input, "statement") != NULL) {
+            printf("C-Bot: The if statement is used to make decisions based on conditions in a program.");
+        }
+        else if (strstr(input, "compiler") != NULL) {
+            printf("C-Bot: A compiler converts C source code into machine-readable code.");
+        }
+        else if (strstr(input, "header file") != NULL) {
+            printf("C-Bot: Header files contain function declarations and macros used in programs, like stdio.h or math.h.");
+        }
+
+        // ---- UNKNOWN INPUT ----
+        else {
+            printf("C-Bot: Sorry, I don't understand that yet. Try asking about arrays, loops, pointers, or variables.");
+        }
+
+        printf("\n\n"); // space between answers
+    }
+
+    printf("======================================\n");
+    printf("          CHAT ENDED SUCCESSFULLY\n");
+    printf("======================================\n");
+    return 0;
+}
