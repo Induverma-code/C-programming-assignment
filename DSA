@@ -1,0 +1,68 @@
+"""
+DSA Project: Stack Implementation Using Array
+BCA - Without using built-in stack library
+Operations: PUSH, POP, PEEK, DISPLAY
+Handles: Stack Overflow and Stack Underflow
+"""
+
+class Stack:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.arr = [None] * capacity
+        self.top = -1
+
+    def is_full(self):
+        return self.top == self.capacity - 1
+
+    def is_empty(self):
+        return self.top == -1
+
+    def push(self, x):
+        if self.is_full():
+            print(f"Stack Overflow: Cannot push {x}. Stack is full.")
+            return False
+        self.top += 1
+        self.arr[self.top] = x
+        print(f"{x} pushed successfully.")
+        return True
+
+    def pop(self):
+        if self.is_empty():
+            print("Stack Underflow: Cannot pop. Stack is empty.")
+            return None
+        popped_element = self.arr[self.top]
+        self.top -= 1
+        print(f"{popped_element} popped successfully.")
+        return popped_element
+
+    def peek(self):
+        if self.is_empty():
+            print("Stack is empty.")
+            return None
+        return self.arr[self.top]
+
+    def display(self):
+        if self.is_empty():
+            print("Stack is empty.")
+            return
+        print("Stack (top to bottom): ", end="")
+        for i in range(self.top, -1, -1):
+            print(self.arr[i], end=" | ")
+        print()
+
+# Driver Code
+if __name__ == "__main__":
+    stack = Stack(5)
+    stack.push(10)
+    stack.push(20)
+    stack.push(30)
+    stack.display()
+    print(f"Top element is {stack.peek()}")
+    stack.pop()
+    stack.display()
+
+    # Overflow Test
+    stack.push(40)
+    stack.push(50)
+    stack.push(60)
+    stack.push(70) # This will cause Overflow
